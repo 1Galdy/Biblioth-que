@@ -49,7 +49,7 @@ form{
     padding: 0 10px 0 10px;
     gap: 10px;
 }
-input[type="text"]{
+input[type="text"], input[type="number"]{
     width: 95%;
     height: 4vh;
     border-radius: 4px;
@@ -73,10 +73,10 @@ input[type="reset"]{
     cursor: pointer;
     color: white;
 }
-input[type="reset"]:focus, input[type="button"]:focus {
+/* input[type="reset"]:focus, input[type="button"]:focus {
     background-color: red;
     font-weight: bold;
-}
+} */
 .containerButton{
     /* background-color: aqua; */
     display: flex;

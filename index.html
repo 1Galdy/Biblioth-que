@@ -14,11 +14,11 @@
             <div class="AddLivres">
                 <h2 class="textCenter">Gestion des livres</h2>
                 <form>
-                    <input type="text" placeholder="Titre du livre">
-                    <input type="text" placeholder="Auteur du livre">
-                    <input type="text" placeholder="Nombre de livres">
+                    <input type="text" id="titre" placeholder="Titre du livre" required>
+                    <input type="text" id="auteur" placeholder="Auteur du livre" required>
+                    <input type="number" id="quantite" placeholder="Nombre de livres" required>
                     <div class="containerButton">
-                        <input type="button" value="Ajouter">
+                        <input type="button" id="addDatas" value="Ajouter">
                         <input type="reset" value="Annuler">
                     </div>
                 </form>
@@ -48,15 +48,15 @@
             
             <div class="AddUsers">
                 <h2 class="textCenter">Gestion des utilisateurs</h2>
-                <form>
+                <!-- <form> -->
                     <input type="text" placeholder="Entrer un nom">
                     <input type="text" placeholder="Entrer un prénom">
                     <input type="text" placeholder="Entrer un email">
                     <div class="containerButton">
-                        <input type="button" value="Enregistrer">
+                        <input type="button" onclick="AddLivres()" value="Enregistrer">
                         <input type="reset" value="Annuler">
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
             <div class="ShwoUsers viewStyles">
                 <h3 class="textCenter">Liste des utilisateurs</h3>
@@ -113,6 +113,6 @@
         </div>
     </div>
     
-    <script src="script.js"></script>
+    <script src="library.js"></script>
 </body>
 </html>
