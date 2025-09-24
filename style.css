@@ -1,0 +1,146 @@
+.ContainerBiblio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(247, 248, 250);
+    border: 1px solid rgb(195, 197, 200);
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+    padding: 1%;
+    gap: 10px;
+    margin: 2% 0 0 14%;
+}
+.styles{
+    background-color: whitesmoke;
+    box-shadow: 2px 2px 15px black;
+    width: 100%;
+    padding: 1%;
+    border-radius: 5px;
+}
+.viewStyles{
+    background-color: whitesmoke;
+    /* box-shadow: 2px 2px 15px black; */
+    width: 48%;
+    padding: 1%;
+    border-radius: 5px;
+    /* background-color: red; */
+}
+.textCenter{
+    text-align: center;
+}
+.GestionLivres {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.AddLivres{
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 0 10px;
+    gap: 10px;
+}
+input[type="text"], input[type="number"]{
+    width: 95%;
+    height: 4vh;
+    border-radius: 4px;
+    border: 2px solid rgb(195, 197, 200);
+}
+input[type="button"]{
+    width: 20%;
+    background-color: rgb(80, 129, 188);
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+input[type="reset"]{
+    width: 20%;
+    background-color: rgb(190, 7, 7);
+    padding: 1%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+/* input[type="reset"]:focus, input[type="button"]:focus {
+    background-color: red;
+    font-weight: bold;
+} */
+.containerButton{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    width: 96%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.GestionUtilisateurs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;  
+}
+.GestionEmprunts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.AddUsers{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    /* background-color: blue; */
+}
+.AssocierAndStatus{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.ShowDatas{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+table  {
+    /* background-color: red; */
+    width: 100%;
+    height: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+th[scope="col"] {
+  background-color: rgb(80, 129, 188);
+  color: #fff;
+}
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+.arrayButton{
+    width: 100%;
+    background-color: rgb(190, 7, 7);
+    padding: 5%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}

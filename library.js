@@ -1,10 +1,4 @@
-// ===================================
-// EXERCICE 1 : SYSTÈME DE GESTION DE BIBLIOTHÈQUE
-// ===================================
-
-// Objectif : Créer un système complet de gestion de bibliothèque
-// Utilise : variables, opérateurs, conditions, boucles, fonctions
-console.log(4)
+// console.log(4)
 // Structure de données principales
 const bibliotheque = {
     livres: [],
@@ -15,18 +9,6 @@ const bibliotheque = {
     prochainIdEmprunt: 1
 };
 
-// ===================================
-// 1. GESTION DES LIVRES
-// ===================================
-
-/**
- * Ajoute un livre à la bibliothèque avec validation complète
- * @param {string} titre - Titre du livre
- * @param {string} auteur - Auteur du livre
- * @param {string} isbn - ISBN du livre (format: XXX-X-XX-XXXXXX-X)
- * @param {number} quantite - Année de publication
- * @param {string} genre - Genre du livre
- * @returns {object} Résultat de l'opération
  */
 function ajouterLivre(titre, auteur, quantite) {
     // - Vérifier que tous les paramètres sont fournis
@@ -36,12 +18,7 @@ function ajouterLivre(titre, auteur, quantite) {
     if(quantite < 0){
         return { succes : false, message:"Année invalide"}
     }
-    // - Vérifier que l'ISBN n'existe pas déjà
-    /*const livreExistant = bibliotheque.livres.find(livre => livre.id === isbn);
-    if (livreExistant) {
-        return { succes: false, message: "Ce livre existe déjà" };
-    }*/
-    // - Ajouter le livre avec un ID unique
+
     const nouveauLivre = {
         id: bibliotheque.prochainIdLivre++,
         titre: titre,
@@ -83,17 +60,6 @@ function rechercherLivres(criteres) {
 }
 
 
-// ===================================
-// 2. GESTION DES UTILISATEURS
-// ===================================
-
-/**
- * Ajoute un utilisateur à la bibliothèque
- * @param {string} nom - Nom de l'utilisateur
- * @param {string} email - Email de l'utilisateur
- * @param {string} telephone - Numéro de téléphone
- * @returns {object} Résultat de l'opération
- */
 function ajouterUtilisateur(nom, email, telephone) {
     // TODO: Implémenter l'ajout d'utilisateur
     // - Valider l'email (format correct)
@@ -118,16 +84,6 @@ function ajouterUtilisateur(nom, email, telephone) {
 }
 
 
-// ===================================
-// 3. GESTION DES EMPRUNTS
-// ===================================
-
-/**
- * Permet à un utilisateur d'emprunter un livre
- * @param {number} utilisateurId - ID de l'utilisateur
- * @param {number} livreId - ID du livre
- * @returns {object} Résultat de l'opération
- */
 
 function emprunterLivre(utilisateurId, livreId) {
     const user = bibliotheque.utilisateurs.find(u =>u.id === utilisateurId)
@@ -141,127 +97,19 @@ function emprunterLivre(utilisateurId, livreId) {
     return false;
 }
 
-console.log(ajouterUtilisateur("Cheikh Anta", "saadbouH.code@gmail.com", "0612345678"));
-ajouterLivre("Le Petit Prince", "Antoine de Saint-Exupéry", 20, "Fiction")
-ajouterLivre("1984", "George Orwell",10, "Dystopie");
-ajouterLivre("Moby-Dick", "Herman Melville",15,  "Adventure");7
 
-
-console.log(rechercherLivres({auteur:"George"}))
-console.log(emprunterLivre(1,2))
-
-/**
- * Permet de retourner un livre emprunté
- * @param {number} empruntId - ID de l'emprunt
- * @returns {object} Résultat de l'opération
- */
 function retournerLivre(empruntId) {
-    // TODO: Implémenter le retour de livre
-    // - Vérifier que l'emprunt existe et est actif
-    // - Calculer les éventuels frais de retard
-    // - Marquer l'emprunt comme terminé
-    // - Rendre le livre disponible
     
     console.log("À implémenter : retournerLivre");
     return { succes: false, message: "Fonction à implémenter" };
 }
 
-// ===================================
-// 4. SYSTÈME DE RECOMMANDATIONS
-// ===================================
-
-/**
- * Recommande des livres à un utilisateur
- * @param {number} utilisateurId - ID de l'utilisateur
- * @param {number} nombreRecommandations - Nombre de recommandations
- * @returns {array} Liste des livres recommandés
- */
-function recommanderLivres(utilisateurId, nombreRecommandations = 5) {
-    // TODO: Implémenter le système de recommandations
-    // - Analyser l'historique d'emprunts de l'utilisateur
-    // - Identifier les genres préférés
-    // - Trouver des livres similaires non empruntés
-    // - Éviter les livres déjà empruntés par l'utilisateur
-    // - Prioriser les livres populaires
-    
-    console.log("À implémenter : recommanderLivres");
-    return [];
-}
-
-// ===================================
-// 5. STATISTIQUES ET RAPPORTS
-// ===================================
-
-/**
- * Génère des statistiques complètes de la bibliothèque
- * @returns {object} Objet contenant toutes les statistiques
- */
-function genererStatistiques() {
-    // TODO: Implémenter les statistiques avancées
-    // - Livre le plus emprunté
-    // - Genre le plus populaire
-    // - Utilisateur le plus actif
-    // - Taux d'occupation de la bibliothèque
-    // - Moyenne d'emprunts par utilisateur
-    // - Livres jamais empruntés
-    // - Retards moyens
-    
-    console.log("À implémenter : genererStatistiques");
-    return {};
-}
-
-/**
- * Génère un rapport des emprunts en retard
- * @returns {array} Liste des emprunts en retard
- */
-function rapportRetards() {
-    // TODO: Implémenter le rapport des retards
-    // - Identifier tous les emprunts en retard
-    // - Calculer le nombre de jours de retard
-    // - Calculer les frais de retard
-    // - Trier par nombre de jours de retard
-    
-    console.log("À implémenter : rapportRetards");
-    return [];
-}
-
-// ===================================
-// 6. FONCTIONS UTILITAIRES
-// ===================================
-
-/**
- * Valide le format d'un ISBN
- * @param {string} isbn - ISBN à valider
- * @returns {boolean} True si valide
- */
-function validerISBN(isbn) {
-    // TODO: Implémenter la validation ISBN
-    // Format attendu: XXX-X-XX-XXXXXX-X
-    console.log("À implémenter : validerISBN");
-    return false;
-}
-
-/**
- * Valide le format d'un email
- * @param {string} email - Email à valider
- * @returns {boolean} True si valide
- */
 function validerEmail(email) {
     // TODO: Implémenter la validation email
     console.log("À implémenter : validerEmail");
     return false;
 }
 
-/**
- * Calcule la date de retour (14 jours après la date d'emprunt)
- * @param {Date} dateEmprunt - Date d'emprunt
- * @returns {Date} Date de retour prévue
- */
-function calculerDateRetour(dateEmprunt) {
-    // TODO: Implémenter le calcul de date de retour
-    console.log("À implémenter : calculerDateRetour");
-    return new Date();
-}
 
 // ===================================
 // 7. DONNÉES DE TEST
@@ -346,3 +194,18 @@ CRITÈRES D'ÉVALUATION :
 BONNE CHANCE ! 🚀
 */
 
+
+// Vérification
+
+function AddLivres() {
+
+        let titre = document.getElementById("titre").value;
+        let auteur = document.getElementById("auteur").value;
+        let nombrePages = parseInt(document.getElementById("quantite").value);
+        
+        alert(titre, auteur, nombrePages);
+        ajouterLivre(titre, auteur, nombrePages);
+        // ajouterUtilisateur();
+        // emprunterLivre(); 
+        // rechercherLivres();
+}

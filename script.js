@@ -1,1 +1,1 @@
-import { rechercherLivres } from './library.js';
+import { ajouterLivre, ajouterUtilisateur, emprunterLivre, rechercherLivres } from './library.js'; 
