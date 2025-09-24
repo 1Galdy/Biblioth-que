@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bitbliothèque</title>
+</head>
+<body>
+
+    <div class="ContainerBiblio">
+        <div class="GestionLivres styles">
+            
+            <div class="AddLivres">
+                <h2 class="textCenter">Gestion des livres</h2>
+                <form>
+                    <input type="text" placeholder="Titre du livre">
+                    <input type="text" placeholder="Auteur du livre">
+                    <input type="text" placeholder="Nombre de livres">
+                    <div class="containerButton">
+                        <input type="button" value="Ajouter">
+                        <input type="reset" value="Annuler">
+                    </div>
+                </form>
+            </div>
+            <div class="ShowLivres viewStyles">
+                <h3 class="textCenter">Liste des Livres</h3>
+
+                <div class="LivresList ShowDatas">
+                    <table border="">
+                        <tr>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Auteur</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Retirer</th>
+                        </tr>
+                          <tr>
+                            <td>Belle nuit</td>
+                            <td>Jean Pliya</td>
+                            <td>200</td>
+                            <td><button class="arrayButton">Retirer</button></td>
+                          </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="GestionUtilisateurs styles">
+            
+            <div class="AddUsers">
+                <h2 class="textCenter">Gestion des utilisateurs</h2>
+                <form>
+                    <input type="text" placeholder="Entrer un nom">
+                    <input type="text" placeholder="Entrer un prénom">
+                    <input type="text" placeholder="Entrer un email">
+                    <div class="containerButton">
+                        <input type="button" value="Enregistrer">
+                        <input type="reset" value="Annuler">
+                    </div>
+                </form>
+            </div>
+            <div class="ShwoUsers viewStyles">
+                <h3 class="textCenter">Liste des utilisateurs</h3>
+                <div class="UsersLivres ShowDatas">
+                    <table border="">
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Retirer</th>
+                        </tr>
+                          <tr>
+                            <td>Belle nuit</td>
+                            <td>Jean Pliya</td>
+                            <td>200</td>
+                            <td><button class="arrayButton">Retirer</button></td>
+                          </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="GestionEmprunts styles">
+            
+            <div class="AssocierAndStatus">
+                <h2 class="textCenter">Gestion des emprunts</h2>
+                <form>
+                    <input type="text" placeholder="Nom de l'utilisateur">
+                    <input type="text" placeholder="Nom du livre">
+                    <div class="containerButton">
+                        <input type="button" value="Associer">
+                        <input type="reset" value="Annuler">
+                    </div>
+                </form>
+            </div>
+            <div class="ShowUmprunts viewStyles">
+                <h3 class="textCenter">List des Emprunts</h3>
+                <div class="UmpruntLivres ShowDatas">
+                    <table border="">
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Statut</th>
+                            <th scope="col">Retirer</th>
+                        </tr>
+                          <tr>
+                            <td>Belle nuit</td>
+                            <td>Jean Pliya</td>
+                            <td>200</td>
+                            <td><button class="arrayButton">Retirer</button></td>
+                          </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
