@@ -4,7 +4,7 @@
 
 // Objectif : Créer un système complet de gestion de bibliothèque
 // Utilise : variables, opérateurs, conditions, boucles, fonctions
-
+console.log(4)
 // Structure de données principales
 const bibliotheque = {
     livres: [],
@@ -24,35 +24,29 @@ const bibliotheque = {
  * @param {string} titre - Titre du livre
  * @param {string} auteur - Auteur du livre
  * @param {string} isbn - ISBN du livre (format: XXX-X-XX-XXXXXX-X)
- * @param {number} annee - Année de publication
+ * @param {number} quantite - Année de publication
  * @param {string} genre - Genre du livre
  * @returns {object} Résultat de l'opération
  */
-function ajouterLivre(titre, auteur, isbn, annee, genre) {
+function ajouterLivre(titre, auteur, quantite) {
     // - Vérifier que tous les paramètres sont fournis
-     if (!titre || !auteur || !isbn || !annee || !genre) {
+     if (!titre || !auteur || !quantite ) {
         return { succes: false, message: "Tous les champs sont obligatoires" };
     }
-    // - Valider le format ISBN
-    
-    // - Vérifier que l'année est valide (entre 1000 et année actuelle)
-    const anneeActuelle = new Date().getFullYear();
-    if (annee < 1000 || annee > anneeActuelle) {
-        return { succes: false, message: "Année invalide" };
+    if(quantite < 0){
+        return { succes : false, message:"Année invalide"}
     }
     // - Vérifier que l'ISBN n'existe pas déjà
-    const livreExistant = bibliotheque.livres.find(livre => livre.isbn === isbn);
+    /*const livreExistant = bibliotheque.livres.find(livre => livre.id === isbn);
     if (livreExistant) {
         return { succes: false, message: "Ce livre existe déjà" };
-    }
+    }*/
     // - Ajouter le livre avec un ID unique
     const nouveauLivre = {
         id: bibliotheque.prochainIdLivre++,
         titre: titre,
         auteur: auteur,
-        isbn: isbn,
-        annee: annee,
-        genre: genre,
+        quantite: quantite,
         disponible: true
     };
     
@@ -62,9 +56,9 @@ function ajouterLivre(titre, auteur, isbn, annee, genre) {
 }
 
 // Test de la fonction ajouterLivre
-console.log(ajouterLivre("Le Petit Prince", "Antoine de Saint-Exupéry", "978-3-16-148410-0", 1943, "Fiction"));
+/*console.log(ajouterLivre("Le Petit Prince", "Antoine de Saint-Exupéry", "978-3-16-148410-0", 1943, "Fiction"));
 console.log(ajouterLivre("1984", "George Orwell", "978-0-452-28423-4", 1949, "Dystopie"));
-console.log(ajouterLivre("Moby-Dick", "Herman Melville", "978-0-14-243724-7", 1851, "Adventure"));
+console.log(ajouterLivre("Moby-Dick", "Herman Melville", "978-0-14-243724-7", 1851, "Adventure"));*/
 
 
 /**
@@ -72,18 +66,22 @@ console.log(ajouterLivre("Moby-Dick", "Herman Melville", "978-0-14-243724-7", 18
  * @param {object} criteres - Critères de recherche
  * @returns {array} Liste des livres trouvés
  */
+
 function rechercherLivres(criteres) {
-    // TODO: Implémenter la recherche avancée
-    // - Recherche par titre (partielle, insensible à la casse)
-    // - Recherche par auteur
-    // - Recherche par genre
-    // - Recherche par année ou plage d'années
-    // - Combiner plusieurs critères
-    // - Trier les résultats par pertinence
-    
-    console.log("À implémenter : rechercherLivres");
-    return [];
+    const auteur = criteres.auteur ? String(criteres.auteur).toLowerCase() : null;
+    const genre = criteres.genre ? String(criteres.genre).toLowerCase() : null;
+    const titre = criteres.titre ? criteres.titre.toLowerCase() : null;
+
+    const resultat = bibliotheque.livres.filter(function(livre) {
+        if (titre && !livre.titre.toLowerCase().includes(titre)) return false;
+        if (auteur && !livre.auteur.toLowerCase().includes(auteur)) return false;
+        if (genre && !livre.genre.toLowerCase().includes(genre)) return false;
+        return true;
+    });
+
+    return resultat;
 }
+
 
 // ===================================
 // 2. GESTION DES UTILISATEURS
@@ -102,21 +100,13 @@ function ajouterUtilisateur(nom, email, telephone) {
     if (!email.includes('@') || !email.includes('.')) {
         return { succes: false, message: "Email invalide" };
     }
-    // - Valider le téléphone (10 chiffres)
-    /**
-        if (!/^\d{10}$/.test(telephone)) {
-        return { succes: false, message: "Téléphone invalide" };
-    }
-     */
-
-    // - Vérifier que l'email n'existe pas déjà
     const utilisateurExistant = bibliotheque.utilisateurs.find(utilisateur => utilisateur.email === email);
     if (utilisateurExistant) {
         return { succes: false, message: "Cet utilisateur existe déjà" };
     }
     // - Créer l'utilisateur avec ID unique
     const nouvelUtilisateur = {
-        id: bibliotheque.prochainIdUtilisateur,
+        id: bibliotheque.prochainIdUtilisateur++,
         nom: nom,
         email: email,
         telephone: telephone
@@ -127,8 +117,6 @@ function ajouterUtilisateur(nom, email, telephone) {
     return { succes: true, message: "Utilisateur ajouté avec succès", utilisateur: nouvelUtilisateur };
 }
 
-// Test de la fonction ajouterUtilisateur
-console.log(ajouterUtilisateur("Cheikh Anta", "saadbouH.code@gmail.com", "0612345678"));
 
 // ===================================
 // 3. GESTION DES EMPRUNTS
@@ -140,18 +128,27 @@ console.log(ajouterUtilisateur("Cheikh Anta", "saadbouH.code@gmail.com", "061234
  * @param {number} livreId - ID du livre
  * @returns {object} Résultat de l'opération
  */
+
 function emprunterLivre(utilisateurId, livreId) {
-    // TODO: Implémenter l'emprunt avec règles métier
-    // - Vérifier que l'utilisateur existe
-    // - Vérifier que le livre existe et est disponible
-    // - Vérifier que l'utilisateur n'a pas déjà 3 emprunts
-    // - Calculer la date de retour (14 jours)
-    // - Enregistrer l'emprunt
-    // - Marquer le livre comme indisponible
+    const user = bibliotheque.utilisateurs.find(u =>u.id === utilisateurId)
+    if(!user) return {succes:false, message:"Utilisateur introuvable"}
+    const livre = bibliotheque.livres.find(l => l.id === livreId);
+    if (livre && livre.quantite > 0) {
+        livre.quantite--; // Décrémenter
+        return {succes : true, message: `Livre emprunté. Quantité restante: ${livre.quantite}`};
+    }
     
-    console.log("À implémenter : emprunterLivre");
-    return { succes: false, message: "Fonction à implémenter" };
+    return false;
 }
+
+console.log(ajouterUtilisateur("Cheikh Anta", "saadbouH.code@gmail.com", "0612345678"));
+ajouterLivre("Le Petit Prince", "Antoine de Saint-Exupéry", 20, "Fiction")
+ajouterLivre("1984", "George Orwell",10, "Dystopie");
+ajouterLivre("Moby-Dick", "Herman Melville",15,  "Adventure");7
+
+
+console.log(rechercherLivres({auteur:"George"}))
+console.log(emprunterLivre(1,2))
 
 /**
  * Permet de retourner un livre emprunté
