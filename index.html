@@ -28,18 +28,19 @@
 
                 <div class="LivresList ShowDatas">
                     <table border="">
-                        <tr>
-                            <th scope="col">Titre</th>
-                            <th scope="col">Auteur</th>
-                            <th scope="col">Quantité</th>
-                            <th scope="col">Retirer</th>
-                        </tr>
-                          <tr>
-                            <td>Belle nuit</td>
-                            <td>Jean Pliya</td>
-                            <td>200</td>
-                            <td><button class="arrayButton">Retirer</button></td>
-                          </tr>
+                        <thead>
+                            <tr>
+                                <th scope="col">Titre</th>
+                                <th scope="col">Auteur</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Retirer</th>
+                                <th scope="col">Modifier</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableauLivres">
+                            <!-- Le contenu généré par JavaScript viendra ici. -->
+                            <!-- Plus besoin de la ligne de test, on peut la supprimer. -->
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -48,15 +49,15 @@
             
             <div class="AddUsers">
                 <h2 class="textCenter">Gestion des utilisateurs</h2>
-                <!-- <form> -->
+                <form>
                     <input type="text" placeholder="Entrer un nom">
                     <input type="text" placeholder="Entrer un prénom">
                     <input type="text" placeholder="Entrer un email">
                     <div class="containerButton">
-                        <input type="button" onclick="AddLivres()" value="Enregistrer">
+                        <input type="button" value="Enregistrer">
                         <input type="reset" value="Annuler">
                     </div>
-                <!-- </form> -->
+                </form>
             </div>
             <div class="ShwoUsers viewStyles">
                 <h3 class="textCenter">Liste des utilisateurs</h3>
@@ -112,7 +113,23 @@
             </div>
         </div>
     </div>
+
+    <div id="UpdateLivres" class="ContainerUpdate none">
+        <div class="AddLivres">
+            <p onclick="closeForm()">X</p>
+            <form>
+                <h2 class="textCenter">Modifier un livre</h2>
+                <input type="text" id="updateTitre" placeholder="Titre du livre" required>
+                <input type="text" id="updateAuteur" placeholder="Auteur du livre" required>
+                <input type="number" id="updateQuantite" placeholder="Nombre de livres" required>
+                <div class="containerButton">
+                    <input type="button" id="updateDatas" value="Modifier">
+                    <input type="reset" value="Annuler">
+                </div>
+            </form>
+        </div>
+    </div>
     
-    <script src="library.js"></script>
+    <script src="./library.js"></script>
 </body>
 </html>

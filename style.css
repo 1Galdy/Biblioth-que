@@ -1,3 +1,6 @@
+body{
+    background-color: #e4e6e6;
+}
 .ContainerBiblio{
     display: flex;
     flex-direction: column;
@@ -135,7 +138,7 @@ td {
   border: 1px solid rgb(160 160 160);
   padding: 8px 10px;
 }
-.arrayButton{
+.arrayButtonDelete{
     width: 100%;
     background-color: rgb(190, 7, 7);
     padding: 5%;
@@ -143,4 +146,47 @@ td {
     border-radius: 4px;
     cursor: pointer;
     color: white;
+}
+.arrayButtonUpdate{
+    width: 100%;
+    background-color: rgb(123, 171, 231);
+    padding: 5%;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.ContainerUpdate {
+    position: absolute;
+    background-color: white;
+    border-radius: 3px;
+    width: 30%;
+    height: auto;
+    z-index: 3;
+    margin-top: -50%;
+    margin-left: 60%;
+    box-shadow: 4px 4px 15px black;
+}
+.ContainerUpdate > * {
+    width: 103%;
+    margin-bottom: 4%;
+}
+.ContainerUpdate > .AddLivres {
+    position: relative;
+}
+.ContainerUpdate > .AddLivres > p {
+    position: absolute;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+    /* background-color: red; */
+    width: 95%;
+    cursor: pointer;
+}
+.none{
+    display: none !important;
+}
+.show{
+    display: block !important;
 }
