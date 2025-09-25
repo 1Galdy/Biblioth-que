@@ -100,112 +100,17 @@ console.log(emprunterLivre(1,2))
  * @returns {object} Résultat de l'opération
  */
 function retournerLivre(empruntId) {
-    // TODO: Implémenter le retour de livre
-    // - Vérifier que l'emprunt existe et est actif
-    // - Calculer les éventuels frais de retard
-    // - Marquer l'emprunt comme terminé
-    // - Rendre le livre disponible
     
     console.log("À implémenter : retournerLivre");
     return { succes: false, message: "Fonction à implémenter" };
 }
 
-// ===================================
-// 4. SYSTÈME DE RECOMMANDATIONS
-// ===================================
-
-/**
- * Recommande des livres à un utilisateur
- * @param {number} utilisateurId - ID de l'utilisateur
- * @param {number} nombreRecommandations - Nombre de recommandations
- * @returns {array} Liste des livres recommandés
- */
-function recommanderLivres(utilisateurId, nombreRecommandations = 5) {
-    // TODO: Implémenter le système de recommandations
-    // - Analyser l'historique d'emprunts de l'utilisateur
-    // - Identifier les genres préférés
-    // - Trouver des livres similaires non empruntés
-    // - Éviter les livres déjà empruntés par l'utilisateur
-    // - Prioriser les livres populaires
-    
-    console.log("À implémenter : recommanderLivres");
-    return [];
-}
-
-// ===================================
-// 5. STATISTIQUES ET RAPPORTS
-// ===================================
-
-/**
- * Génère des statistiques complètes de la bibliothèque
- * @returns {object} Objet contenant toutes les statistiques
- */
-function genererStatistiques() {
-    // TODO: Implémenter les statistiques avancées
-    // - Livre le plus emprunté
-    // - Genre le plus populaire
-    // - Utilisateur le plus actif
-    // - Taux d'occupation de la bibliothèque
-    // - Moyenne d'emprunts par utilisateur
-    // - Livres jamais empruntés
-    // - Retards moyens
-    
-    console.log("À implémenter : genererStatistiques");
-    return {};
-}
-
-/**
- * Génère un rapport des emprunts en retard
- * @returns {array} Liste des emprunts en retard
- */
-function rapportRetards() {
-    // TODO: Implémenter le rapport des retards
-    // - Identifier tous les emprunts en retard
-    // - Calculer le nombre de jours de retard
-    // - Calculer les frais de retard
-    // - Trier par nombre de jours de retard
-    
-    console.log("À implémenter : rapportRetards");
-    return [];
-}
-
-// ===================================
-// 6. FONCTIONS UTILITAIRES
-// ===================================
-
-/**
- * Valide le format d'un ISBN
- * @param {string} isbn - ISBN à valider
- * @returns {boolean} True si valide
- */
-function validerISBN(isbn) {
-    // TODO: Implémenter la validation ISBN
-    // Format attendu: XXX-X-XX-XXXXXX-X
-    console.log("À implémenter : validerISBN");
-    return false;
-}
-
-/**
- * Valide le format d'un email
- * @param {string} email - Email à valider
- * @returns {boolean} True si valide
- */
 function validerEmail(email) {
     // TODO: Implémenter la validation email
     console.log("À implémenter : validerEmail");
     return false;
 }
 
-/**
- * Calcule la date de retour (14 jours après la date d'emprunt)
- * @param {Date} dateEmprunt - Date d'emprunt
- * @returns {Date} Date de retour prévue
- */
-function calculerDateRetour(dateEmprunt) {
-    // TODO: Implémenter le calcul de date de retour
-    console.log("À implémenter : calculerDateRetour");
-    return new Date();
-}
 
 // ===================================
 // 7. DONNÉES DE TEST
@@ -290,3 +195,18 @@ CRITÈRES D'ÉVALUATION :
 BONNE CHANCE ! 🚀
 */
 
+
+// Vérification
+
+function AddLivres() {
+
+        let titre = document.getElementById("titre").value;
+        let auteur = document.getElementById("auteur").value;
+        let nombrePages = parseInt(document.getElementById("quantite").value);
+        
+        alert(titre, auteur, nombrePages);
+        ajouterLivre(titre, auteur, nombrePages);
+        // ajouterUtilisateur();
+        // emprunterLivre(); 
+        // rechercherLivres();
+}
