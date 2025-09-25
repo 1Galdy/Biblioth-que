@@ -1,4 +1,3 @@
-// console.log(4)
 // Structure de données principales
 const bibliotheque = {
     livres: [],
@@ -9,30 +8,47 @@ const bibliotheque = {
     prochainIdEmprunt: 1
 };
 let html = ``;
-//  alert('Données de test générées :');
+
 function ajouterLivre(titre, auteur, quantite) {
-    // - Vérifier que tous les paramètres sont fournis
-     if (!titre || !auteur || !quantite ) {
+    // Vérifier que tous les champs sont renseignés
+    if (!titre || !auteur || quantite === undefined || quantite === null) {
         return { succes: false, message: "Tous les champs sont obligatoires" };
     }
-    if(quantite < 0){
-        return { succes : false, message:"Année invalide"}
+
+    if (quantite < 0) {
+        return { succes: false, message: "Quantité invalide" };
     }
 
+    // Récupérer les livres depuis le localStorage (ou créer une liste vide)
+    const livresJSON = localStorage.getItem("bibliotheque");
+    const livres = livresJSON ? JSON.parse(livresJSON) : [];
+
+    // Récupérer ou initialiser l’ID suivant
+    let prochainId = parseInt(localStorage.getItem("prochainIdLivre") || "1");
+
+    // Créer le nouveau livre
     const nouveauLivre = {
-        id: bibliotheque.prochainIdLivre++,
+        id: prochainId,
         titre: titre,
         auteur: auteur,
-        quantite: quantite,
+        quantite: Number(quantite),
         disponible: true
     };
-    
-    bibliotheque.livres.push(nouveauLivre);
-    // localStorage.setItem("Lippp", nouveauLivre);
-    monlocal = localStorage;
-    monlocal.setItem("bibliotheque", JSON.stringify(bibliotheque.livres));
-    return { succes: true, message: "Livre ajouté avec succès", livre: nouveauLivre };
 
+    // Ajouter le livre à la liste
+    livres.push(nouveauLivre);
+
+    // Sauvegarder dans le localStorage
+    localStorage.setItem("bibliotheque", JSON.stringify(livres));
+    localStorage.setItem("prochainIdLivre", (prochainId + 1).toString());
+
+    livreLocalStorage();
+
+    return {
+        succes: true,
+        message: "Livre ajouté avec succès",
+        livre: nouveauLivre
+    };
 }
 
 // Test de la fonction ajouterLivre
@@ -40,12 +56,6 @@ function ajouterLivre(titre, auteur, quantite) {
 console.log(ajouterLivre("1984", "George Orwell", "978-0-452-28423-4", 1949, "Dystopie"));
 console.log(ajouterLivre("Moby-Dick", "Herman Melville", "978-0-14-243724-7", 1851, "Adventure"));*/
 
-
-/**
- * Recherche des livres selon différents critères
- * @param {object} criteres - Critères de recherche
- * @returns {array} Liste des livres trouvés
- */
 
 function rechercherLivres(criteres) {
     const auteur = criteres.auteur ? String(criteres.auteur).toLowerCase() : null;
@@ -61,7 +71,6 @@ function rechercherLivres(criteres) {
 
     return resultat;
 }
-
 
 function ajouterUtilisateur(nom, email, telephone) {
     // TODO: Implémenter l'ajout d'utilisateur
@@ -86,8 +95,6 @@ function ajouterUtilisateur(nom, email, telephone) {
     return { succes: true, message: "Utilisateur ajouté avec succès", utilisateur: nouvelUtilisateur };
 }
 
-
-
 function emprunterLivre(utilisateurId, livreId) {
     const user = bibliotheque.utilisateurs.find(u =>u.id === utilisateurId)
     if(!user) return {succes:false, message:"Utilisateur introuvable"}
@@ -99,7 +106,6 @@ function emprunterLivre(utilisateurId, livreId) {
     
     return false;
 }
-
 
 function retournerLivre(empruntId) {
     
@@ -113,106 +119,23 @@ function validerEmail(email) {
     return false;
 }
 
-
-// ===================================
-// 7. DONNÉES DE TEST
-// ===================================
-
-/**
- * Initialise la bibliothèque avec des données de test
- */
-function initialiserDonneesTest() {
-    // TODO: Ajouter des livres, utilisateurs et emprunts de test
-    console.log("À implémenter : initialiserDonneesTest");
-}
-
-// ===================================
-// 8. FONCTIONNALITÉS BONUS
-// ===================================
-
-/**
- * Système de réservation de livres
- * @param {number} utilisateurId - ID de l'utilisateur
- * @param {number} livreId - ID du livre
- * @returns {object} Résultat de la réservation
- */
-function reserverLivre(utilisateurId, livreId) {
-    // BONUS: Implémenter le système de réservation
-    console.log("BONUS à implémenter : reserverLivre");
-    return { succes: false, message: "Fonction bonus à implémenter" };
-}
-
-/**
- * Système de notation des livres
- * @param {number} utilisateurId - ID de l'utilisateur
- * @param {number} livreId - ID du livre
- * @param {number} note - Note de 1 à 5
- * @param {string} commentaire - Commentaire optionnel
- * @returns {object} Résultat de la notation
- */
-function noterLivre(utilisateurId, livreId, note, commentaire = "") {
-    // BONUS: Implémenter le système de notation
-    console.log("BONUS à implémenter : noterLivre");
-    return { succes: false, message: "Fonction bonus à implémenter" };
-}
-
-// ===================================
-// INSTRUCTIONS POUR L'EXERCICE
-// ===================================
-
-/*
-INSTRUCTIONS :
-
-1. Implémentez toutes les fonctions marquées "TODO"
-2. Utilisez tous les concepts JavaScript vus :
-   - Variables (let, const) et types de données
-   - Opérateurs (arithmétiques, comparaison, logiques)
-   - Conditions (if/else, switch, opérateur ternaire)
-   - Boucles (for, while, for...of, forEach)
-   - Fonctions (déclarations, expressions, arrow functions)
-
-3. Respectez les bonnes pratiques :
-   - Validation des paramètres d'entrée
-   - Gestion des cas d'erreur
-   - Code lisible et bien commenté
-   - Fonctions pures quand possible
-
-4. Testez votre code :
-   - Créez des cas de test pour chaque fonction
-   - Vérifiez les cas limites
-   - Testez avec des données invalides
-
-5. Fonctionnalités bonus (optionnelles) :
-   - Système de réservation
-   - Notation des livres
-   - Interface en ligne de commande
-   - Sauvegarde des données
-
-CRITÈRES D'ÉVALUATION :
-- Fonctionnalité (40%) : Toutes les fonctions marchent correctement
-- Qualité du code (30%) : Code propre, lisible, bien structuré
-- Gestion d'erreurs (20%) : Validation et gestion des cas d'erreur
-- Innovation (10%) : Fonctionnalités bonus et créativité
-
-BONNE CHANCE ! 🚀
-*/
-
-
 //--------------------------- Vérification et ajout d'un nouveau livre --------------------------------------
 
 const button = document.getElementById('addDatas');
 
-        button.addEventListener('click', ()=>{
-            const titre = document.getElementById('titre').value;
-            const auteur = document.getElementById('auteur').value;
-            const quantite = parseInt(document.getElementById('quantite').value);
+button.addEventListener('click', ()=>{
 
-            const resultat = ajouterLivre(titre, auteur, quantite);
-            console.log(resultat);
-            if(resultat){
-                livreLocalStorage();
-            }
-        })
+    const titre = document.getElementById('titre').value;
+    const auteur = document.getElementById('auteur').value;
+    const quantite = parseInt(document.getElementById('quantite').value);
+
+    const resultat = ajouterLivre(titre, auteur, quantite);
+    console.log(resultat);
+
+    if(resultat){
+        livreLocalStorage();
+    }
+})
 
 //-------------- Récupéré et afficher les données de livre stocké en localStorage ----------------------------------
 
@@ -239,6 +162,8 @@ const livreLocalStorage = () => {
     // et l'injecter dans le tbody (ou le tr qui sert de conteneur)
     arrayLivres.innerHTML = htmlRows.join('');
 }
+
+livreLocalStorage();
 
 //-------------- Supprimer un livre stocké en localStorage ----------------------------------
 
@@ -270,8 +195,7 @@ function deleteLivre(id) {
     } 
 }
 
-
-//-------------- Afficher un tableau normal mais vide ----------------------------------
+//-------------- Afficher un tableau normal vide ----------------------------------
 
 (function basicArray() {
     const livresJSON = localStorage.getItem("bibliotheque");
@@ -285,7 +209,6 @@ function deleteLivre(id) {
         return;
     }
 })();
-
 
 //-------------- Modifier les données dans le localStorage ----------------------------------
 
@@ -321,7 +244,6 @@ function updateLivre(updateid, updatetitre, updateauteur, updatequantite) {
     // Mettre à jour l'affichage (si nécessaire)
     livreLocalStorage();
 }
-
 
 //-------------- Créer un formulaire pour modifier les données d'un livre ----------------------------------
 let updateId;
@@ -364,3 +286,97 @@ function closeForm() {
 }
 
 
+//------------- Gestion de l'ajout des utilisateurs ----------------------------------
+
+const usersLocalStorage = () => {
+    const livresJSON = localStorage.getItem("users");
+    const arrayLivres = document.getElementById('tableauUsers');
+
+    if (!livresJSON) {
+        // Pas de données : afficher une ligne vide avec 5 colonnes (le nombre dans le <thead>)
+        arrayLivres.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center; font-style: italic; color: gray;">
+                    Aucun livre enregistré
+                </td>
+            </tr>`;
+        return;
+    }
+
+    const data = JSON.parse(livresJSON);
+
+    if (!data.length) {
+        // Tableau vide : même comportement que ci-dessus
+        arrayLivres.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center; font-style: italic; color: gray;">
+                    Aucun livre enregistré
+                </td>
+            </tr>`;
+        return;
+    }
+
+    // Si on a des données, on génère les lignes normalement
+    const htmlRows = data.map(livre => 
+        `<tr>
+            <td>${livre.titre}</td>
+            <td>${livre.auteur}</td>
+            <td>${livre.quantite}</td>
+            <td><button class="arrayButtonDelete" onclick="deleteLivre('${livre.id}')">Retirer</button></td>
+            <td><button class="arrayButtonUpdate" onclick="newForm('${livre.id}')">Modifier</button></td>
+        </tr>`
+    ).join('');
+
+    arrayLivres.innerHTML = htmlRows;
+};
+
+// Appel initial pour afficher le tableau au chargement de la page
+usersLocalStorage();
+
+
+//------------- Gestion de l'emprunt des livres ----------------------------------
+
+const EmpruntsLocalStorage = () => {
+    const livresJSON = localStorage.getItem("Emprunts");
+    const arrayLivres = document.getElementById('tableauEmprunts');
+
+    if (!livresJSON) {
+        // Pas de données : afficher une ligne vide avec 5 colonnes (le nombre dans le <thead>)
+        arrayLivres.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center; font-style: italic; color: gray;">
+                    Aucun livre enregistré
+                </td>
+            </tr>`;
+        return;
+    }
+
+    const data = JSON.parse(livresJSON);
+
+    if (!data.length) {
+        // Tableau vide : même comportement que ci-dessus
+        arrayLivres.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center; font-style: italic; color: gray;">
+                    Aucun livre enregistré
+                </td>
+            </tr>`;
+        return;
+    }
+
+    // Si on a des données, on génère les lignes normalement
+    const htmlRows = data.map(livre => 
+        `<tr>
+            <td>${livre.titre}</td>
+            <td>${livre.auteur}</td>
+            <td>${livre.quantite}</td>
+            <td><button class="arrayButtonDelete" onclick="deleteLivre('${livre.id}')">Retirer</button></td>
+            <td><button class="arrayButtonUpdate" onclick="newForm('${livre.id}')">Modifier</button></td>
+        </tr>`
+    ).join('');
+
+    arrayLivres.innerHTML = htmlRows;
+};
+
+// Appel initial pour afficher le tableau au chargement de la page
+EmpruntsLocalStorage();
