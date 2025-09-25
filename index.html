@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de Bibliothèque</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<div id="modalModifier" class="modal">
+  <div class="modal-content">
+    <h3>Modifier le Livre</h3>
+    <form id="formModifier">
+      <input type="hidden" id="editIndex">
+      <label for="editTitre">Titre</label>
+      <input type="text" id="editTitre">
+
+      <label for="editAuteur">Auteur</label>
+      <input type="text" id="editAuteur">
+
+      <label for="editQuantite">Quantité</label>
+      <input type="number" id="editQuantite">
+
+      <div class="modal-actions">
+        <button type="submit">💾 Sauvegarder</button>
+        <button type="button" id="btnAnnuler">❌ Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="modalModifierUser" class="modal">
+    <div class="modal-content">
+    <h3>Modifier l'Utilisateur</h3>
+    <form id="formModifierUser">
+      <input type="hidden" id="editIndexUser">
+      <label for="editNom">Nom</label>
+      <input type="text" id="editNom">
+      <label for="editPrenom">Prénom</label>
+      <input type="text" id="editPrenom">
+      <label for="editMail">E-mail</label>
+      <input type="email" id="editEmail">
+      <div class="modal-actions">
+        <button type="submit">💾 Sauvegarder</button>
+        <button type="button" id="btnAnnulerUser">❌ Annuler</button>
+      </div>
+    </form>
+    </div>
+</div>
+<body>
+  <header>
+    <h1>📚 Gestion de Bibliothèque</h1>
+    <nav>
+      <ul>
+        <li><a href="#livres">Livres</a></li>
+        <li><a href="#utilisateurs">Utilisateurs</a></li>
+        <li><a href="#emprunts">Emprunts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Section Livres -->
+    <section id="livres" class="card">
+      <h2>📖 Gestion des Livres</h2>
+      <form id="formLivre" class="formulaire">
+        <input type="text" id="titreLivre" placeholder="Titre" required>
+        <input type="text" id="auteurLivre" placeholder="Auteur" required>
+        <input type="number" id="quantiteLivre" placeholder="Quantité" min="1" required>
+        <button type="submit">Ajouter Livre</button>
+      </form>
+      <h3>Liste des Livres</h3>
+      <div class="recherche">
+            <input type="text" id="rechercheTitre" placeholder="Rechercher par titre">
+            <input type="text" id="rechercheAuteur" placeholder="Rechercher par auteur">
+            <button id="btnRecherche">🔍 Rechercher</button>
+            <button id="btnReset">♻️ Réinitialiser</button>
+      </div>
+      <table id="tableLivres">
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Quantité</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les livres seront ajoutés ici via JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section Utilisateurs -->
+    <section id="utilisateurs" class="card">
+      <h2>👤 Gestion des Utilisateurs</h2>
+      <form id="formUtilisateur" class="formulaire">
+        <input type="text" id="nomUtilisateur" placeholder="Nom" required>
+        <input type="text" id="prenomUtilisateur" placeholder="Prénom" required>
+        <input type="email" id="emailUtilisateur" placeholder="Email" required>
+        <button type="submit">Ajouter Utilisateur</button>
+      </form>
+      <h3>Liste des Utilisateurs</h3>
+      <div class="recherche">
+        <input type="text" id="rechercheEmail" placeholder="Rechercher par email">
+        <button id="btnRechercheUser"> 🔍 Rechercher</button>
+        <button id="btnResetUser">♻️ Réinitialiser</button>
+      </div>
+      <table id="tableUtilisateurs">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les utilisateurs seront ajoutés ici via JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Section Emprunts -->
+    <section id="emprunts" class="card">
+      <h2>🔄 Gestion des Emprunts</h2>
+      <form id="formEmprunt" class="formulaire">
+        <select id="selectUtilisateur" required></select>
+        <select id="selectLivre" required></select>
+        <button type="submit">Emprunter Livre</button>
+      </form>
+      <h3>Emprunts Actifs</h3>
+      <table id="tableEmprunts">
+        <thead>
+          <tr>
+            <th>Utilisateur</th>
+            <th>Livre</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les emprunts seront ajoutés ici via JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projet Bibliothèque - Gestion avec LocalStorage</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

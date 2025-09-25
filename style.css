@@ -1,0 +1,266 @@
+/* --- Reset minimal --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Body --- */
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px 0;
+}
+
+/* --- Header --- */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #27ae60; /* Vert principal */
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* --- Main --- */
+main {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto; /* Centre le main */
+}
+
+/* --- Main Cards --- */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Forms --- */
+.formulaire {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.formulaire input,
+.formulaire select,
+.formulaire button {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.formulaire input, .formulaire select {
+  flex: 1;
+  min-width: 150px;
+}
+
+.formulaire button {
+  background-color: #27ae60; /* Vert principal */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulaire button:hover {
+  background-color: #2ecc71; /* Vert clair */
+}
+
+/* --- Tables --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+   background-color: #34495e;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* --- Buttons Actions --- */
+button.actionBtn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+button.supprimer {
+  background-color: #e74c3c;
+  
+}
+button.supprimer:hover {
+  background-color: #c0392b;
+}
+
+button.retourner {
+  background-color: #27ae60;
+}
+
+button.retourner:hover {
+  background-color: #2ecc71;
+}
+button.modifier {
+    background-color: #f39c12; /* Orange */
+}
+
+button.modifier:hover {
+    background-color: #e67e22;
+}
+/* --- Footer --- */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 10px 0;
+  color: #777;
+  width: 100%;
+}
+.recherche {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap; /* s’adapte sur petits écrans */
+}
+
+.recherche input {
+    flex: 1; /* prend l’espace disponible */
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.recherche button {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Bouton recherche en vert */
+#btnRecherche, #btnRechercheUser {
+    background-color: #27ae60;
+    color: white;
+}
+#btnRecherche:hover, #btnRechercheUser:hover {
+    background-color: #2ecc71;
+}
+
+/* Bouton reset en rouge clair */
+#btnReset, #btnResetUser {
+    background-color: #e74c3c;
+    color: white;
+}
+#btnReset:hover, #btnResetUser:hover {
+    background-color: #c0392b;
+}
+/* Overlay noir semi-transparent */
+.modal {
+  display: none; /* caché par défaut */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenu de la card */
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal-content label {
+  display: block;
+  margin: 8px 0 4px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-actions button[type="submit"] {
+  background: #27ae60;
+  color: white;
+}
+
+.modal-actions #btnAnnuler, #btnAnnulerUser {
+  background: #e74c3c;
+  color: white;
+}

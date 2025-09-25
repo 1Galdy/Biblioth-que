@@ -1,11 +1,4 @@
-// ===================================
-// EXERCICE 1 : SYSTÈME DE GESTION DE BIBLIOTHÈQUE
-// ===================================
 
-// Objectif : Créer un système complet de gestion de bibliothèque
-// Utilise : variables, opérateurs, conditions, boucles, fonctions
-console.log(4)
-// Structure de données principales
 const bibliotheque = {
     livres: [],
     utilisateurs: [],
@@ -15,19 +8,6 @@ const bibliotheque = {
     prochainIdEmprunt: 1
 };
 
-// ===================================
-// 1. GESTION DES LIVRES
-// ===================================
-
-/**
- * Ajoute un livre à la bibliothèque avec validation complète
- * @param {string} titre - Titre du livre
- * @param {string} auteur - Auteur du livre
- * @param {string} isbn - ISBN du livre (format: XXX-X-XX-XXXXXX-X)
- * @param {number} quantite - Année de publication
- * @param {string} genre - Genre du livre
- * @returns {object} Résultat de l'opération
- */
 function ajouterLivre(titre, auteur, quantite) {
     // - Vérifier que tous les paramètres sont fournis
      if (!titre || !auteur || !quantite ) {
@@ -36,12 +16,6 @@ function ajouterLivre(titre, auteur, quantite) {
     if(quantite < 0){
         return { succes : false, message:"Année invalide"}
     }
-    // - Vérifier que l'ISBN n'existe pas déjà
-    /*const livreExistant = bibliotheque.livres.find(livre => livre.id === isbn);
-    if (livreExistant) {
-        return { succes: false, message: "Ce livre existe déjà" };
-    }*/
-    // - Ajouter le livre avec un ID unique
     const nouveauLivre = {
         id: bibliotheque.prochainIdLivre++,
         titre: titre,
@@ -55,17 +29,6 @@ function ajouterLivre(titre, auteur, quantite) {
 
 }
 
-// Test de la fonction ajouterLivre
-/*console.log(ajouterLivre("Le Petit Prince", "Antoine de Saint-Exupéry", "978-3-16-148410-0", 1943, "Fiction"));
-console.log(ajouterLivre("1984", "George Orwell", "978-0-452-28423-4", 1949, "Dystopie"));
-console.log(ajouterLivre("Moby-Dick", "Herman Melville", "978-0-14-243724-7", 1851, "Adventure"));*/
-
-
-/**
- * Recherche des livres selon différents critères
- * @param {object} criteres - Critères de recherche
- * @returns {array} Liste des livres trouvés
- */
 
 function rechercherLivres(criteres) {
     const auteur = criteres.auteur ? String(criteres.auteur).toLowerCase() : null;
@@ -83,20 +46,8 @@ function rechercherLivres(criteres) {
 }
 
 
-// ===================================
-// 2. GESTION DES UTILISATEURS
-// ===================================
-
-/**
- * Ajoute un utilisateur à la bibliothèque
- * @param {string} nom - Nom de l'utilisateur
- * @param {string} email - Email de l'utilisateur
- * @param {string} telephone - Numéro de téléphone
- * @returns {object} Résultat de l'opération
- */
 function ajouterUtilisateur(nom, email, telephone) {
-    // TODO: Implémenter l'ajout d'utilisateur
-    // - Valider l'email (format correct)
+  
     if (!email.includes('@') || !email.includes('.')) {
         return { succes: false, message: "Email invalide" };
     }
@@ -104,7 +55,7 @@ function ajouterUtilisateur(nom, email, telephone) {
     if (utilisateurExistant) {
         return { succes: false, message: "Cet utilisateur existe déjà" };
     }
-    // - Créer l'utilisateur avec ID unique
+ 
     const nouvelUtilisateur = {
         id: bibliotheque.prochainIdUtilisateur++,
         nom: nom,
@@ -118,17 +69,6 @@ function ajouterUtilisateur(nom, email, telephone) {
 }
 
 
-// ===================================
-// 3. GESTION DES EMPRUNTS
-// ===================================
-
-/**
- * Permet à un utilisateur d'emprunter un livre
- * @param {number} utilisateurId - ID de l'utilisateur
- * @param {number} livreId - ID du livre
- * @returns {object} Résultat de l'opération
- */
-
 function emprunterLivre(utilisateurId, livreId) {
     const user = bibliotheque.utilisateurs.find(u =>u.id === utilisateurId)
     if(!user) return {succes:false, message:"Utilisateur introuvable"}
@@ -141,6 +81,7 @@ function emprunterLivre(utilisateurId, livreId) {
     return false;
 }
 
+
 console.log(ajouterUtilisateur("Cheikh Anta", "saadbouH.code@gmail.com", "0612345678"));
 ajouterLivre("Le Petit Prince", "Antoine de Saint-Exupéry", 20, "Fiction")
 ajouterLivre("1984", "George Orwell",10, "Dystopie");
@@ -149,6 +90,9 @@ ajouterLivre("Moby-Dick", "Herman Melville",15,  "Adventure");7
 
 console.log(rechercherLivres({auteur:"George"}))
 console.log(emprunterLivre(1,2))
+
+
+
 
 /**
  * Permet de retourner un livre emprunté
